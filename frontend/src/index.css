@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+/* Styles personnalisés TGR */
+.btn-tgr-primary {
+  background-color: #0284c7;
+  color: white;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-tgr-primary:hover {
+  background-color: #0369a1;
+}
+
+.btn-tgr-secondary {
+  background-color: white;
+  color: #075985;
+  border: 1px solid #7dd3fc;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.btn-tgr-secondary:hover {
+  background-color: #f0f9ff;
+}
+
+.tgr-card {
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.status-en_service {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.status-en_panne {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.status-en_maintenance {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.status-reforme {
+  background-color: #f3f4f6;
+  color: #374151;
+}
