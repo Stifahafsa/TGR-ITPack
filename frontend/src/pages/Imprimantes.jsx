@@ -122,7 +122,7 @@ const Imprimantes = () => {
         <h1 className="text-2xl font-bold text-gray-900">Gestion des Imprimantes</h1>
         <button
           onClick={() => setShowForm(true)}
-          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
+          className="group bg-white text-orange-600 font-semibold py-3 px-6 rounded-xl border-2 border-orange-500 hover:bg-orange-500 hover:text-white transition-all duration-300 flex items-center space-x-3 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 cursor-pointer"
         >
           Ajouter une Imprimante
         </button>
@@ -133,84 +133,148 @@ const Imprimantes = () => {
           <h2 className="text-lg font-semibold mb-4">
             {editingImprimante ? 'Modifier l\'Imprimante' : 'Nouvelle Imprimante'}
           </h2>
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input
-              type="text"
-              placeholder="Marque"
-              value={formData.marque}
-              onChange={(e) => setFormData({...formData, marque: e.target.value})}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
-            <input
-              type="text"
-              placeholder="Modèle"
-              value={formData.modele}
-              onChange={(e) => setFormData({...formData, modele: e.target.value})}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
-            <input
-              type="text"
-              placeholder="Numéro de série"
-              value={formData.numero_serie}
-              onChange={(e) => setFormData({...formData, numero_serie: e.target.value})}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
-            <input
-              type="text"
-              placeholder="Numéro d'inventaire"
-              value={formData.numero_inventaire}
-              onChange={(e) => setFormData({...formData, numero_inventaire: e.target.value})}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
-            <input
-              type="date"
-              placeholder="Date de livraison"
-              value={formData.date_livraison}
-              onChange={(e) => setFormData({...formData, date_livraison: e.target.value})}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
-            <input
-              type="date"
-              placeholder="Date d'achat"
-              value={formData.date_achat}
-              onChange={(e) => setFormData({...formData, date_achat: e.target.value})}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <input
-              type="date"
-              placeholder="Fin de contrat maintenance"
-              value={formData.date_fin_contrat_maintenance}
-              onChange={(e) => setFormData({...formData, date_fin_contrat_maintenance: e.target.value})}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <select
-              value={formData.perception_id}
-              onChange={(e) => setFormData({...formData, perception_id: e.target.value})}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            >
-              <option value="">Sélectionner une perception</option>
-              {perceptions.map(p => (
-                <option key={p.id} value={p.id}>{p.nom}</option>
-              ))}
-            </select>
-            <select
-              value={formData.statut}
-              onChange={(e) => setFormData({...formData, statut: e.target.value})}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="en_service">En service</option>
-              <option value="en_panne">En panne</option>
-              <option value="en_maintenance">En maintenance</option>
-              <option value="reforme">Réformé</option>
-            </select>
-            <div className="md:col-span-2 flex gap-2">
-              <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Marque */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Marque *
+              </label>
+              <input
+                type="text"
+                value={formData.marque}
+                onChange={(e) => setFormData({...formData, marque: e.target.value})}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+                placeholder="Ex: HP, Canon, Brother"
+              />
+            </div>
+
+            {/* Modèle */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Modèle *
+              </label>
+              <input
+                type="text"
+                value={formData.modele}
+                onChange={(e) => setFormData({...formData, modele: e.target.value})}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+                placeholder="Ex: LaserJet Pro M404dn"
+              />
+            </div>
+
+            {/* Numéro de série */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Numéro de série *
+              </label>
+              <input
+                type="text"
+                value={formData.numero_serie}
+                onChange={(e) => setFormData({...formData, numero_serie: e.target.value})}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+                placeholder="Numéro de série unique"
+              />
+            </div>
+
+            {/* Numéro d'inventaire */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Numéro d'inventaire *
+              </label>
+              <input
+                type="text"
+                value={formData.numero_inventaire}
+                onChange={(e) => setFormData({...formData, numero_inventaire: e.target.value})}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+                placeholder="Ex: INV-IMP-001"
+              />
+            </div>
+
+            {/* Date de livraison */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Date de livraison *
+              </label>
+              <input
+                type="date"
+                value={formData.date_livraison}
+                onChange={(e) => setFormData({...formData, date_livraison: e.target.value})}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+              />
+            </div>
+
+            {/* Date d'achat */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Date d'achat
+              </label>
+              <input
+                type="date"
+                value={formData.date_achat}
+                onChange={(e) => setFormData({...formData, date_achat: e.target.value})}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            {/* Fin de contrat maintenance */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Fin de contrat maintenance
+              </label>
+              <input
+                type="date"
+                value={formData.date_fin_contrat_maintenance}
+                onChange={(e) => setFormData({...formData, date_fin_contrat_maintenance: e.target.value})}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            {/* Perception */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Perception *
+              </label>
+              <select
+                value={formData.perception_id}
+                onChange={(e) => setFormData({...formData, perception_id: e.target.value})}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+              >
+                <option value="">Sélectionner une perception</option>
+                {perceptions.map(p => (
+                  <option key={p.id} value={p.id}>{p.nom} ({p.code})</option>
+                ))}
+              </select>
+            </div>
+
+            {/* Statut */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Statut
+              </label>
+              <select
+                value={formData.statut}
+                onChange={(e) => setFormData({...formData, statut: e.target.value})}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="en_service">En service</option>
+                <option value="en_panne">En panne</option>
+                <option value="en_maintenance">En maintenance</option>
+                <option value="reforme">Réformé</option>
+              </select>
+            </div>
+
+            {/* Boutons */}
+            <div className="md:col-span-2 flex gap-2 pt-4">
+              <button 
+                type="submit" 
+                className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200"
+              >
                 {editingImprimante ? 'Modifier' : 'Créer'}
               </button>
               <button 
@@ -224,7 +288,7 @@ const Imprimantes = () => {
                     perception_id: '', statut: 'en_service'
                   });
                 }}
-                className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600"
+                className="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600 transition-colors duration-200"
               >
                 Annuler
               </button>
@@ -233,6 +297,7 @@ const Imprimantes = () => {
         </div>
       )}
 
+      {/* Tableau des imprimantes */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="min-w-full">

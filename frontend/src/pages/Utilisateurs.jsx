@@ -96,7 +96,7 @@ const Utilisateurs = () => {
         <h1 className="text-2xl font-bold text-gray-900">Gestion des Utilisateurs</h1>
         <button
           onClick={() => setShowForm(true)}
-          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
+          className="group bg-white text-orange-600 font-semibold py-3 px-6 rounded-xl border-2 border-orange-500 hover:bg-orange-500 hover:text-white transition-all duration-300 flex items-center space-x-3 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 cursor-pointer"
         >
           Ajouter Utilisateur
         </button>
